@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 
@@ -58,6 +59,20 @@ public class EntidadBancariaDAO {
         
         //EJECUTAR LA CONSULTA UPDATE
         preparedStatement.executeUpdate();
+    }
+    
+    public void select() throws SQLException {
+        Connection conn = null;
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sistema_bancario","root", "root");
+        String selectSQL = "SELECT * FROM entidadbancaria";
+        PreparedStatement preparedStatement = conn.prepareStatement(selectSQL);
+        ResultSet rs = preparedStatement.executeQuery(selectSQL );
+        while (rs.next()) {
+            int idEntidadBancaria = rs.getInt("idEntidadBancaria");
+            String nombre = rs.getString("nombre");
+            String codigoEntidad = rs.getString("codigoEntidad");
+            Date fechaCreacion = rs.getDate("fechaCreacion");
+        }
     }
     
     private static java.sql.Timestamp getCurrentTimeStamp() {

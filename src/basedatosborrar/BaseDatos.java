@@ -25,8 +25,8 @@ public class BaseDatos {
         //CREACION DEL OBJETO PARA LLAMAR A LAS FUNCIONES DE LA CLASE 'EntidadBancaria'
             EntidadBancaria entidadBancaria = new EntidadBancaria();
             entidadBancaria.setIdEntidadBancaria(7);
-            entidadBancaria.setNombre("caixaBank");
-            entidadBancaria.setCodigoEntidad("00" + entidadBancaria.getIdEntidadBancaria() + "0");
+            entidadBancaria.setNombre("santander");
+            entidadBancaria.setCodigoEntidad("00" + entidadBancaria.getIdEntidadBancaria());
             entidadBancaria.setFechaCreacion(null);
         
         //CREACIÓN DEL OBJETO PARA LLAMAR A LAS FUNCIONES DE LA CLASE 'EntidadBancariaDAO'
@@ -38,11 +38,12 @@ public class BaseDatos {
         //INSERTAR UNA FILA CONCRETA DE LA TABLA 'entidadBancaria'
 //            entidadBancariaDAO.insert(entidadBancaria);
         
-            entidadBancaria.setNombre("bankia");
+//            entidadBancaria.setNombre("bankia");
             
         //MODIFICAR UNA FILA CONCRETA DE LA TABLA 'entidadBancaria'
-            entidadBancariaDAO.update(entidadBancaria);
+//            entidadBancariaDAO.update(entidadBancaria);
          
-        
+        //MOSTRAR UNA LISTA DE FILAS DE LA BASE DE DATOS
+//            entidadBancariaDAO.select();
     }   
 }
