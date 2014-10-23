@@ -46,14 +46,15 @@ public class EntidadBancariaDAO {
         preparedStatement.executeUpdate();
     }
     
-    public void update(int idEntidadBancaria) throws SQLException {
+    public void update(EntidadBancaria entidadBancaria) throws SQLException {
         Connection conn = null;
         conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sistema_bancario","root", "root");
-        String updateTableSQL = "UPDATE entidadbancaria SET nombre = ? WHERE idEntidadBancaria = ?";
+        String updateTableSQL = "UPDATE entidadbancaria SET nombre = ?, codigoEntidad = ? WHERE idEntidadBancaria = ?";
         
         PreparedStatement preparedStatement = conn.prepareStatement(updateTableSQL);
-        preparedStatement.setString(1, "caixaBank");
-        preparedStatement.setInt(2, idEntidadBancaria);
+        preparedStatement.setString(1, entidadBancaria.getNombre());
+        preparedStatement.setString(2, entidadBancaria.getCodigoEntidad());
+        preparedStatement.setInt(3, entidadBancaria.getIdEntidadBancaria());
         
         //EJECUTAR LA CONSULTA UPDATE
         preparedStatement.executeUpdate();
