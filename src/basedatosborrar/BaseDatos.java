@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -40,10 +42,15 @@ public class BaseDatos {
         
 //            entidadBancaria.setNombre("bankia");
             
-        //MODIFICAR UNA FILA CONCRETA DE LA TABLA 'entidadBancaria'
+//        MODIFICAR UNA FILA CONCRETA DE LA TABLA 'entidadBancaria'
 //            entidadBancariaDAO.update(entidadBancaria);
          
-        //MOSTRAR UNA LISTA DE FILAS DE LA BASE DE DATOS
-//            entidadBancariaDAO.select();
+        //MOSTRAR TODOS LOS REGISTROS O FILAS DE LA BASE DE DATOS
+            List<EntidadBancaria> entidadesBancarias = new ArrayList<EntidadBancaria>();
+          
+            entidadBancariaDAO.findAll();
+            
+        //MOSTRAR TODOS LOS REGISTROS O FILAS DE LA BASE DE DATOS
+//            entidadBancariaDAO.find(entidadBancaria);
     }   
 }
