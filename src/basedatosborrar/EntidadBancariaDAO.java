@@ -7,12 +7,10 @@
 package basedatosborrar;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +21,7 @@ import java.util.List;
 public class EntidadBancariaDAO {
     public void delete (int idEntidadBancaria) throws SQLException {
          
-        Connection conn = null;
+        Connection conn;
         conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sistema_bancario","root", "root");
         String deleteTableSQL = "DELETE FROM entidadbancaria WHERE idEntidadBancaria = ?";
         
@@ -35,7 +33,7 @@ public class EntidadBancariaDAO {
     }    
     
     public void insert(EntidadBancaria entidadBancaria) throws SQLException {
-        Connection conn = null;
+        Connection conn;
         conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sistema_bancario","root", "root");
         String insertTableSQL = "INSERT INTO entidadbancaria VALUES (?, ?, ?, ?)";
         
@@ -50,7 +48,7 @@ public class EntidadBancariaDAO {
     }
     
     public void update(EntidadBancaria entidadBancaria) throws SQLException {
-        Connection conn = null;
+        Connection conn;
         conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sistema_bancario","root", "root");
         String updateTableSQL = "UPDATE entidadbancaria SET nombre = ?, codigoEntidad = ? WHERE idEntidadBancaria = ?";
         
@@ -64,14 +62,14 @@ public class EntidadBancariaDAO {
     }
     
     public List<EntidadBancaria> findAll() throws SQLException {
-        Connection conn = null;
+        Connection conn;
         conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sistema_bancario","root", "root");
         String selectSQL = "SELECT * FROM entidadbancaria";
         
         PreparedStatement preparedStatement = conn.prepareStatement(selectSQL);
         ResultSet rs = preparedStatement.executeQuery(selectSQL );
         
-        List<EntidadBancaria> entidadesBancarias = new ArrayList<EntidadBancaria>();
+        List<EntidadBancaria> entidadesBancariasList = new ArrayList<>();
         
         while (rs.next()) {
             EntidadBancaria entidadBancaria = new EntidadBancaria();
@@ -80,13 +78,13 @@ public class EntidadBancariaDAO {
             entidadBancaria.setCodigoEntidad(rs.getString("codigoEntidad"));
             entidadBancaria.setFechaCreacion(rs.getDate("fechaCreacion"));
             
-            entidadesBancarias.add(entidadBancaria);
+            entidadesBancariasList.add(entidadBancaria);
         }
-        return entidadesBancarias;
+        return entidadesBancariasList;
     }
     
     public void find(EntidadBancaria entidadBancaria) throws SQLException {
-        Connection conn = null;
+        Connection conn;
         conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sistema_bancario","root", "root");
         String selectParcialSQL = "SELECT * FROM entidadbancaria WHERE nombre = ?";
         
@@ -98,7 +96,7 @@ public class EntidadBancariaDAO {
                 + "FECHA_CREACION");
         while (rs.next()) {
             System.out.println(rs.getInt("idEntidadBancaria") + "                      " 
-                + rs.getString(entidadBancaria.getNombre()) + "       " + rs.getString("codigoEntidad") + "           " 
+                + rs.getString(rs.getString("nombre")) + "       " + rs.getString("codigoEntidad") + "           " 
                 + rs.getDate("fechaCreacion"));
         }
     }

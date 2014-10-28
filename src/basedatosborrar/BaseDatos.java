@@ -11,6 +11,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -46,8 +47,8 @@ public class BaseDatos {
 //            entidadBancariaDAO.update(entidadBancaria);
          
         //MOSTRAR TODOS LOS REGISTROS O FILAS DE LA BASE DE DATOS
-            List<EntidadBancaria> entidadesBancarias = new ArrayList<EntidadBancaria>();
-          
+            List<EntidadBancaria> entidadesBancarias = new ArrayList<>();
+            
             entidadBancariaDAO.findAll();
             
         //MOSTRAR TODOS LOS REGISTROS O FILAS DE LA BASE DE DATOS
