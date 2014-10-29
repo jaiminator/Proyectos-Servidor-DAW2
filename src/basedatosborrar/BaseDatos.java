@@ -26,11 +26,11 @@ public class BaseDatos {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         
         //CREACION DEL OBJETO PARA LLAMAR A LAS FUNCIONES DE LA CLASE 'EntidadBancaria'
-            EntidadBancaria entidadBancaria = new EntidadBancaria();
-            entidadBancaria.setIdEntidadBancaria(7);
-            entidadBancaria.setNombre("santander");
-            entidadBancaria.setCodigoEntidad("00" + entidadBancaria.getIdEntidadBancaria());
-            entidadBancaria.setFechaCreacion(null);
+//            EntidadBancaria entidadBancaria = new EntidadBancaria();
+//            entidadBancaria.setIdEntidadBancaria(7);
+//            entidadBancaria.setNombre("santander");
+//            entidadBancaria.setCodigoEntidad("00" + entidadBancaria.getIdEntidadBancaria());
+//            entidadBancaria.setFechaCreacion(null);
         
         //CREACIÓN DEL OBJETO PARA LLAMAR A LAS FUNCIONES DE LA CLASE 'EntidadBancariaDAO'
             EntidadBancariaDAO entidadBancariaDAO = new EntidadBancariaDAO();
@@ -49,7 +49,16 @@ public class BaseDatos {
         //MOSTRAR TODOS LOS REGISTROS O FILAS DE LA BASE DE DATOS
             List<EntidadBancaria> entidadesBancarias = new ArrayList<>();
             
-            entidadBancariaDAO.findAll();
+            entidadesBancarias = entidadBancariaDAO.findAll();
+            
+            
+            System.out.println("IdEntidadBancaria    Nombre    CodigoEntidad   FechaCreacion" );
+            System.out.println("");
+            
+            for (EntidadBancaria entidadBancaria: entidadesBancarias) {
+                System.out.println(entidadBancaria.getIdEntidadBancaria() + "                    " + entidadBancaria.getNombre() +
+                        "       " + entidadBancaria.getCodigoEntidad() + "          " + entidadBancaria.getFechaCreacion());
+            }
             
         //MOSTRAR TODOS LOS REGISTROS O FILAS DE LA BASE DE DATOS
 //            entidadBancariaDAO.find(entidadBancaria);
